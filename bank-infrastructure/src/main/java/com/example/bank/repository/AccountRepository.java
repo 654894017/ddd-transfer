@@ -16,11 +16,13 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class AccountRepository implements IAccountRepository {
     private final AccountMapper accountDAO;
+
     @Override
     public Account find(AccountId id) {
         AccountDO accountDO = accountDAO.selectById(id.getValue());
         return AccountFactory.toAccount(accountDO);
     }
+
     @Override
     public Account find(AccountNumber accountNumber) {
         AccountDO accountDO = accountDAO.selectByAccountNumber(accountNumber.getValue());
@@ -29,6 +31,7 @@ public class AccountRepository implements IAccountRepository {
         }
         return AccountFactory.toAccount(accountDO);
     }
+
     @Override
     public Account find(UserId userId) {
         AccountDO accountDO = accountDAO.selectByUserId(userId.getId());
@@ -37,6 +40,7 @@ public class AccountRepository implements IAccountRepository {
         }
         return AccountFactory.toAccount(accountDO);
     }
+
     @Override
     public Account save(Account account) {
         AccountDO accountDO = AccountFactory.fromAccount(account);

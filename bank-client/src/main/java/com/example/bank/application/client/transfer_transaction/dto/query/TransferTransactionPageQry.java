@@ -11,5 +11,4 @@ public class TransferTransactionPageQry extends PageQuery {
     private Long accountId;
 
 
-
 }

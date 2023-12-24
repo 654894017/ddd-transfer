@@ -14,6 +14,7 @@ public class Account {
     private Money available;
     private Money dailyLimit;
     private Currency currency;
+
     // 转出
     public void withdraw(Money money) {
         if (this.available.compareTo(money) < 0) {

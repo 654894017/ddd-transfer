@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 public class AccountByAccountIdQryExe {
     private final IAccountRepository accountRepository;
     private final AccountAssembler accountAssembler;
+
     public SingleResponse<AccountDTO> get(AccountByAccountIdQry qry) {
         Account account = accountRepository.find(new AccountId(qry.getAccountId()));
         return SingleResponse.of(accountAssembler.to(account));

@@ -21,5 +21,5 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class API {
 
-	public static final String WEB_API_PATH = "v0.1/api/";
+    public static final String WEB_API_PATH = "v0.1/api/";
 }

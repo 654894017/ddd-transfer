@@ -2,10 +2,12 @@ package com.example.bank.application.transfer_transaction.executor.command;
 
 import com.example.bank.account.IAccountRepository;
 import com.example.bank.account.entity.Account;
-import com.example.bank.account.types.TransactionMessage;
+import com.example.bank.application.client.transfer_transaction.dto.event.TransferTransactionSucceedEvent;
+import com.example.bank.gateway.IAccountMessageProducerGateway;
 import com.example.bank.gateway.IExchangeRateGateway;
-import com.example.bank.gateway.ITransferMessageProducerGateway;
 import com.example.bank.transaction.AccountTransferDomainService;
+import com.example.bank.transaction.ITrasactionRepository;
+import com.example.bank.transaction.entity.Transaction;
 import com.example.bank.types.*;
 import ddd.core.SingleResponse;
 import lombok.RequiredArgsConstructor;
@@ -17,9 +19,10 @@ import java.math.BigDecimal;
 @RequiredArgsConstructor
 public class TransactionTransferCmdExe {
     private final IAccountRepository accountRepository;
-    private final ITransferMessageProducerGateway transferMessageProducerGateway;
+    private final IAccountMessageProducerGateway transferMessageProducerGateway;
     private final IExchangeRateGateway exchangeRateGateway;
     private final AccountTransferDomainService accountTransferDomainService;
+    private final ITrasactionRepository transferTrasactionRepository;
 
     public SingleResponse<Boolean> transfer(Long sourceUserId, String targetAccountNumber, BigDecimal targetAmount, String targetCurrency) {
         Money targetMoney = new Money(targetAmount, new Currency(targetCurrency));
@@ -30,13 +33,20 @@ public class TransactionTransferCmdExe {
 
         ExchangeRate exchangeRate = exchangeRateGateway.getExchangeRate(sourceAccount.getCurrency(), targetMoney.getCurrency());
 
-        accountTransferDomainService.transfer(sourceAccount, targetAccount, targetMoney, exchangeRate);
+        Transaction transaction = accountTransferDomainService.transfer(sourceAccount, targetAccount, targetMoney, exchangeRate);
         accountRepository.save(sourceAccount);
         accountRepository.save(targetAccount);
 
-        // 发送消息用于审计日志、短信通知、交易记录
-        TransactionMessage message = new TransactionMessage(sourceAccount, targetAccount, targetMoney);
-        transferMessageProducerGateway.send(message);
+        // 记录交易记录
+        Long transferTransactionId = transferTrasactionRepository.save(transaction);
+        // 发送消息用于审计日志、短信通知
+        TransferTransactionSucceedEvent event = new TransferTransactionSucceedEvent(
+                transferTransactionId,
+                sourceAccount.getId().getValue(),
+                targetAccount.getId().getValue(),
+                targetAmount, targetCurrency
+        );
+        transferMessageProducerGateway.send(event);
         return SingleResponse.buildSuccess();
     }
 }

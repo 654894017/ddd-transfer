@@ -1,11 +1,12 @@
 package com.example.bank.application.client.account.dto.command;
 
-import com.example.ddd.core.Command;
+import ddd.core.Command;
 import lombok.Data;
 
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
+
 @Data
 public class AccountWithdrawCmd extends Command {
 

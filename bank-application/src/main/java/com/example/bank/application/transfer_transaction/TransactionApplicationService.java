@@ -1,7 +1,7 @@
 package com.example.bank.application.transfer_transaction;
 
-import com.example.bank.application.client.transfer_transaction.ITransferTransactionApplicationService;
-import com.example.bank.application.client.transfer_transaction.dto.TransferTrasactionDTO;
+import com.example.bank.application.client.transfer_transaction.ITransactionApplicationService;
+import com.example.bank.application.client.transfer_transaction.dto.TransactionDTO;
 import com.example.bank.application.client.transfer_transaction.dto.command.AccountTransferCmd;
 import com.example.bank.application.client.transfer_transaction.dto.query.TransferTransactionPageQry;
 import com.example.bank.application.transfer_transaction.executor.command.TransactionTransferCmdExe;
@@ -14,18 +14,20 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class TransferTransactionApplicationService implements ITransferTransactionApplicationService {
+public class TransactionApplicationService implements ITransactionApplicationService {
     private final TransactionTransferCmdExe transactionTransferCmdExe;
-    private final TransferTransactionAssembler transferTransactionAssembler;
+    private final TransactionAssembler transactionAssembler;
     private final TransferTransactionPageQryExe transferTransactionPageQryExe;
+
     @Override
     @Transactional(rollbackFor = Exception.class)
     public SingleResponse<Boolean> transfer(AccountTransferCmd cmd) {
         return transactionTransferCmdExe.transfer(cmd.getSourceUserId(),
                 cmd.getTargetAccountNumber(), cmd.getTargetAmount(), cmd.getTargetCurrency());
     }
+
     @Override
-    public PageResponse<TransferTrasactionDTO> query(TransferTransactionPageQry qry) {
+    public PageResponse<TransactionDTO> query(TransferTransactionPageQry qry) {
         return transferTransactionPageQryExe.query(qry);
     }
 

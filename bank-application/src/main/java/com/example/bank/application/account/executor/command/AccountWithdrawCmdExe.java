@@ -1,10 +1,13 @@
 package com.example.bank.application.account.executor.command;
 
+import com.example.bank.account.AccountWithdramDomainService;
 import com.example.bank.account.IAccountRepository;
 import com.example.bank.account.entity.Account;
-import com.example.bank.account.types.TransactionMessage;
 import com.example.bank.application.client.account.dto.command.AccountWithdrawCmd;
-import com.example.bank.gateway.ITransferMessageProducerGateway;
+import com.example.bank.application.client.account.dto.event.AccountWithdrawSucceedEvent;
+import com.example.bank.gateway.IAccountMessageProducerGateway;
+import com.example.bank.transaction.ITrasactionRepository;
+import com.example.bank.transaction.entity.Transaction;
 import com.example.bank.types.AccountId;
 import com.example.bank.types.Currency;
 import com.example.bank.types.Money;
@@ -16,14 +19,23 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AccountWithdrawCmdExe {
     private final IAccountRepository accountRepository;
-    private final ITransferMessageProducerGateway transferMessageProducerGateway;
+    private final IAccountMessageProducerGateway accountMessageProducerGateway;
+    private final ITrasactionRepository transferTrasactionRepository;
+    private final AccountWithdramDomainService accountWithdramDomainService;
+
     public SingleResponse<Boolean> withdraw(AccountWithdrawCmd cmd) {
         Account account = accountRepository.find(new AccountId(cmd.getSourceUserId()));
         account.withdraw(new Money(cmd.getMoney(), new Currency(cmd.getCurrency())));
+        Transaction transaction = new Transaction().toWithdramTransaction(account.getId(), new Money(cmd.getMoney(), new Currency(cmd.getCurrency())));
         accountRepository.save(account);
-        // 发送消息用于审计日志、短信通知、交易记录
-        TransactionMessage message = new TransactionMessage(account, new Money(cmd.getMoney(), new Currency(cmd.getCurrency())));
-        transferMessageProducerGateway.send(message);
+        // 记录交易记录
+        Long transferTransactionId = transferTrasactionRepository.save(transaction);
+        // 发送消息用于审计日志、短信通知
+        AccountWithdrawSucceedEvent event = new AccountWithdrawSucceedEvent(
+                transferTransactionId, account.getId().getValue(),
+                cmd.getMoney(), cmd.getCurrency()
+        );
+        accountMessageProducerGateway.send(event);
         return SingleResponse.buildSuccess();
     }
 

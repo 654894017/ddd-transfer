@@ -6,7 +6,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class TransferTrasactionDTO extends DTO {
+public class TransactionDTO extends DTO {
     private Long id;
     private String accountNumber;
     private Long userId;

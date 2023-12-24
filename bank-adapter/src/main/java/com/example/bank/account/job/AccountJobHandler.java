@@ -25,7 +25,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AccountJobHandler {
 
-   // @XxlJob(value = "activityNotGenerateSchedule",cron = "0 0 10 * * ?",desc = "活动配置提醒",runAtReg = true)
+    // @XxlJob(value = "activityNotGenerateSchedule",cron = "0 0 10 * * ?",desc = "活动配置提醒",runAtReg = true)
     public void jobHandler() throws Exception {
         //XxlJobHelper.log("XXL-JOB, Hello World.");
     }

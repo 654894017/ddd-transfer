@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 public class AccountConsumer {
     /**
      * 下发短信
+     *
      * @param data
      * @param ack
      */
@@ -22,6 +23,7 @@ public class AccountConsumer {
 
     /**
      * 审计日志
+     *
      * @param data
      * @param ack
      */

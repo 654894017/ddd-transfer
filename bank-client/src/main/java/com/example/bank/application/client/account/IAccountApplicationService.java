@@ -9,6 +9,8 @@ import ddd.core.SingleResponse;
 
 public interface IAccountApplicationService {
     SingleResponse<Boolean> deposit(AccountDepositCmd cmd);
+
     SingleResponse<Boolean> withdraw(AccountWithdrawCmd cmd);
+
     SingleResponse<AccountDTO> get(AccountByAccountIdQry qry);
 }
