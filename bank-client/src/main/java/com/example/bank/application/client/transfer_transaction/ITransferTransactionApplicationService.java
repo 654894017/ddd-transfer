@@ -2,7 +2,8 @@ package com.example.bank.application.client.transfer_transaction;
 
 
 import com.example.bank.application.client.transfer_transaction.dto.command.AccountTransferCmd;
+import ddd.core.SingleResponse;
 
 public interface ITransferTransactionApplicationService {
-    void transfer(AccountTransferCmd command);
+    SingleResponse<Boolean> transfer(AccountTransferCmd command);
 }

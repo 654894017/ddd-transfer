@@ -1,6 +1,5 @@
 package com.example.bank.types;
 
-import com.example.bank.exception.MoneyAmoutNotNullException;
 
 import java.math.BigDecimal;
 

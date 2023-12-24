@@ -8,6 +8,7 @@ import com.example.bank.gateway.ITransferMessageProducerGateway;
 import com.example.bank.types.AccountId;
 import com.example.bank.types.Currency;
 import com.example.bank.types.Money;
+import ddd.core.SingleResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,13 +17,14 @@ import org.springframework.stereotype.Service;
 public class AccountWithdrawCmdExe {
     private final IAccountRepository accountRepository;
     private final ITransferMessageProducerGateway transferMessageProducerGateway;
-    public void withdraw(AccountWithdrawCmd cmd) {
+    public SingleResponse<Boolean> withdraw(AccountWithdrawCmd cmd) {
         Account account = accountRepository.find(new AccountId(cmd.getSourceUserId()));
         account.withdraw(new Money(cmd.getMoney(), new Currency(cmd.getCurrency())));
         accountRepository.save(account);
         // 发送消息用于审计日志、短信通知、交易记录
         TransactionMessage message = new TransactionMessage(account, new Money(cmd.getMoney(), new Currency(cmd.getCurrency())));
         transferMessageProducerGateway.send(message);
+        return SingleResponse.buildSuccess();
     }
 
 }
