@@ -1,6 +1,5 @@
 package com.example.bank.application.account.executor.command;
 
-import com.example.bank.account.AccountWithdramDomainService;
 import com.example.bank.account.IAccountRepository;
 import com.example.bank.account.entity.Account;
 import com.example.bank.application.client.account.dto.command.AccountWithdrawCmd;
