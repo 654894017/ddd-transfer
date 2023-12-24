@@ -21,7 +21,6 @@ public class AccountWithdrawCmdExe {
     private final IAccountRepository accountRepository;
     private final IAccountMessageProducerGateway accountMessageProducerGateway;
     private final ITrasactionRepository transferTrasactionRepository;
-    private final AccountWithdramDomainService accountWithdramDomainService;
 
     public SingleResponse<Boolean> withdraw(AccountWithdrawCmd cmd) {
         Account account = accountRepository.find(new AccountId(cmd.getSourceUserId()));
