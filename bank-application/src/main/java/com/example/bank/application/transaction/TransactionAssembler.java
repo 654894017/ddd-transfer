@@ -1,4 +1,4 @@
-package com.example.bank.application.transfer_transaction;
+package com.example.bank.application.transaction;
 
 import org.springframework.stereotype.Component;
 

@@ -1,24 +1,23 @@
 package com.example.bank.account.exception;
 
-public class AccountNotFoundException extends RuntimeException {
+import ddd.core.exception.BizException;
+
+public class AccountNotFoundException extends BizException {
 
 
-    public AccountNotFoundException() {
+    public AccountNotFoundException(String errMessage) {
+        super(errMessage);
     }
 
-    public AccountNotFoundException(String message) {
-        super(message);
+    public AccountNotFoundException(String errCode, String errMessage) {
+        super(errCode, errMessage);
     }
 
-    public AccountNotFoundException(String message, Throwable cause) {
-        super(message, cause);
+    public AccountNotFoundException(String errMessage, Throwable e) {
+        super(errMessage, e);
     }
 
-    public AccountNotFoundException(Throwable cause) {
-        super(cause);
-    }
-
-    public AccountNotFoundException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
+    public AccountNotFoundException(String errorCode, String errMessage, Throwable e) {
+        super(errorCode, errMessage, e);
     }
 }

@@ -1,22 +1,22 @@
 package com.example.bank.account.exception;
 
-public class InsufficientFundsException extends RuntimeException {
-    public InsufficientFundsException() {
+import ddd.core.exception.BizException;
+
+public class InsufficientFundsException extends BizException {
+
+    public InsufficientFundsException(String errMessage) {
+        super(errMessage);
     }
 
-    public InsufficientFundsException(String message) {
-        super(message);
+    public InsufficientFundsException(String errCode, String errMessage) {
+        super(errCode, errMessage);
     }
 
-    public InsufficientFundsException(String message, Throwable cause) {
-        super(message, cause);
+    public InsufficientFundsException(String errMessage, Throwable e) {
+        super(errMessage, e);
     }
 
-    public InsufficientFundsException(Throwable cause) {
-        super(cause);
-    }
-
-    public InsufficientFundsException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
+    public InsufficientFundsException(String errorCode, String errMessage, Throwable e) {
+        super(errorCode, errMessage, e);
     }
 }

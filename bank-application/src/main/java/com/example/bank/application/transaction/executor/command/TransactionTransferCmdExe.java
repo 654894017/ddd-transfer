@@ -1,4 +1,4 @@
-package com.example.bank.application.transfer_transaction.executor.command;
+package com.example.bank.application.transaction.executor.command;
 
 import com.example.bank.account.IAccountRepository;
 import com.example.bank.account.entity.Account;

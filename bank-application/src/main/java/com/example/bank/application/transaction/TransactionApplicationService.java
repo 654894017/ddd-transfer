@@ -1,11 +1,11 @@
-package com.example.bank.application.transfer_transaction;
+package com.example.bank.application.transaction;
 
 import com.example.bank.application.client.transfer_transaction.ITransactionApplicationService;
 import com.example.bank.application.client.transfer_transaction.dto.TransactionDTO;
 import com.example.bank.application.client.transfer_transaction.dto.command.AccountTransferCmd;
 import com.example.bank.application.client.transfer_transaction.dto.query.TransferTransactionPageQry;
-import com.example.bank.application.transfer_transaction.executor.command.TransactionTransferCmdExe;
-import com.example.bank.application.transfer_transaction.executor.query.TransferTransactionPageQryExe;
+import com.example.bank.application.transaction.executor.command.TransactionTransferCmdExe;
+import com.example.bank.application.transaction.executor.query.TransferTransactionPageQryExe;
 import ddd.core.PageResponse;
 import ddd.core.SingleResponse;
 import lombok.RequiredArgsConstructor;

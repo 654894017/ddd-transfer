@@ -18,10 +18,10 @@ public class Account {
     // 转出
     public void withdraw(Money money) {
         if (this.available.compareTo(money) < 0) {
-            throw new InsufficientFundsException();
+            throw new InsufficientFundsException("账户资金不足");
         }
         if (this.dailyLimit.compareTo(money) < 0) {
-            throw new DailyLimitExceededException();
+            throw new DailyLimitExceededException("超出日转账限额");
         }
         this.available = this.available.subtract(money);
     }

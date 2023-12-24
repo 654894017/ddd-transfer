@@ -1,25 +1,25 @@
 package com.example.bank.account.exception;
 
+import ddd.core.exception.BizException;
+
 /**
  * 超出日限额异常
  */
-public class DailyLimitExceededException extends RuntimeException {
-    public DailyLimitExceededException() {
+public class DailyLimitExceededException extends BizException {
+
+    public DailyLimitExceededException(String errMessage) {
+        super(errMessage);
     }
 
-    public DailyLimitExceededException(String message) {
-        super(message);
+    public DailyLimitExceededException(String errCode, String errMessage) {
+        super(errCode, errMessage);
     }
 
-    public DailyLimitExceededException(String message, Throwable cause) {
-        super(message, cause);
+    public DailyLimitExceededException(String errMessage, Throwable e) {
+        super(errMessage, e);
     }
 
-    public DailyLimitExceededException(Throwable cause) {
-        super(cause);
-    }
-
-    public DailyLimitExceededException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
+    public DailyLimitExceededException(String errorCode, String errMessage, Throwable e) {
+        super(errorCode, errMessage, e);
     }
 }

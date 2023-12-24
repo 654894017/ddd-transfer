@@ -1,19 +1,21 @@
 package com.example.bank.account.exception;
 
-public class InvalidCurrencyException extends IllegalArgumentException {
+import ddd.core.exception.BizException;
 
-    public InvalidCurrencyException() {
+public class InvalidCurrencyException extends BizException {
+    public InvalidCurrencyException(String errMessage) {
+        super(errMessage);
     }
 
-    public InvalidCurrencyException(String s) {
-        super(s);
+    public InvalidCurrencyException(String errCode, String errMessage) {
+        super(errCode, errMessage);
     }
 
-    public InvalidCurrencyException(String message, Throwable cause) {
-        super(message, cause);
+    public InvalidCurrencyException(String errMessage, Throwable e) {
+        super(errMessage, e);
     }
 
-    public InvalidCurrencyException(Throwable cause) {
-        super(cause);
+    public InvalidCurrencyException(String errorCode, String errMessage, Throwable e) {
+        super(errorCode, errMessage, e);
     }
 }

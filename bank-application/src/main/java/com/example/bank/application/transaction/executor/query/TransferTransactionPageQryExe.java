@@ -1,4 +1,4 @@
-package com.example.bank.application.transfer_transaction.executor.query;
+package com.example.bank.application.transaction.executor.query;
 
 import com.example.bank.application.client.transfer_transaction.dto.TransactionDTO;
 import com.example.bank.application.client.transfer_transaction.dto.query.TransferTransactionPageQry;
