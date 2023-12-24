@@ -16,12 +16,18 @@
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>bank-types</artifactId>
-            <version>${dddbook.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>bank-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>bank-types</artifactId>
         </dependency>
     </dependencies>
 

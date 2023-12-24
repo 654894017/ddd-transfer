@@ -13,7 +13,7 @@ public class Money {
     public Money(BigDecimal amout, Currency currency) {
 
         if (amout == null) {
-            throw new MoneyAmoutNotNullException("金额不能为空");
+            throw new IllegalArgumentException("金额不能为空");
         }
         this.amout = amout;
         this.currency = currency;
@@ -37,7 +37,7 @@ public class Money {
     }
 
 
-    public Money add(Money money) throws MoneyAmoutNotNullException {
+    public Money add(Money money) {
         BigDecimal resultAmout = this.amout.add(money.getAmout());
         return new Money(resultAmout, this.currency);
     }

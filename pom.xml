@@ -23,7 +23,6 @@
         <module>bank-start</module>
         <module>bank-client</module>
     </modules>
-
     <packaging>pom</packaging>
 
     <parent>
@@ -32,10 +31,54 @@
         <version>2.1.2.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>bank-client</artifactId>
+                <version>${dddbook.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>bank-adapter</artifactId>
+                <version>${dddbook.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>bank-application</artifactId>
+                <version>${dddbook.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>bank-infrastructure</artifactId>
+                <version>${dddbook.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>bank-start</artifactId>
+                <version>${dddbook.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>bank-types</artifactId>
+                <version>${dddbook.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>bank-domain</artifactId>
+                <version>${dddbook.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>ddd-dto</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

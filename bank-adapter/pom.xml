@@ -19,8 +19,16 @@
         </dependency>
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>bank-client</artifactId>
-            <version>${dddbook.version}</version>
+            <artifactId>bank-application</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>2.7.23</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
         </dependency>
     </dependencies>
 </project>

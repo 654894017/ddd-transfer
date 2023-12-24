@@ -19,12 +19,18 @@
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>bank-domain</artifactId>
-            <version>${dddbook.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>bank-adapter</artifactId>
         </dependency>
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>bank-application</artifactId>
-            <version>${dddbook.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>bank-types</artifactId>
         </dependency>
     </dependencies>
 </project>
