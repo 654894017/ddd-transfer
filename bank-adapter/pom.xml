@@ -19,7 +19,7 @@
         </dependency>
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>bank-client</artifactId>
+            <artifactId>bank-application</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.dubbo</groupId>

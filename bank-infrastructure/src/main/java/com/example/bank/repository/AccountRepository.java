@@ -1,8 +1,8 @@
 package com.example.bank.repository;
 
+import com.example.bank.account.IAccountRepository;
 import com.example.bank.account.entity.Account;
 import com.example.bank.account.exception.AccountNotFoundException;
-import com.example.bank.account.IAccountRepository;
 import com.example.bank.persistence.account.AccountDO;
 import com.example.bank.persistence.account.AccountFactory;
 import com.example.bank.persistence.account.AccountMapper;

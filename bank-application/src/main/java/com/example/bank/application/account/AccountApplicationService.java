@@ -19,7 +19,7 @@ public class AccountApplicationService implements IAccountApplicationService {
     private final AccountDepositCmdExe accountDepositCmdExe;
     private final AccountWithdrawCmdExe accountWithdrawCmdExe;
     @Override
-    public SingleResponse deposit(AccountDepositCmd cmd) {
+    public SingleResponse<Boolean> deposit(AccountDepositCmd cmd) {
         return accountDepositCmdExe.deposit(cmd);
     }
     @Override

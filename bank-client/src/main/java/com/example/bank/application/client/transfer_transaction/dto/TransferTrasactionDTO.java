@@ -1,11 +1,12 @@
-package com.example.bank.application.client.account.dto;
+package com.example.bank.application.client.transfer_transaction.dto;
 
 import ddd.core.DTO;
 import lombok.Data;
 
 import java.math.BigDecimal;
+
 @Data
-public class AccountDTO extends DTO {
+public class TransferTrasactionDTO extends DTO {
     private Long id;
     private String accountNumber;
     private Long userId;

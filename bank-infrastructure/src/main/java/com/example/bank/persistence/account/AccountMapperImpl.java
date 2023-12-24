@@ -1,7 +1,5 @@
 package com.example.bank.persistence.account;
 
-import com.example.bank.persistence.account.AccountDO;
-import com.example.bank.persistence.account.AccountMapper;
 import org.springframework.stereotype.Repository;
 
 @Repository

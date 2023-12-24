@@ -3,7 +3,6 @@ package com.example.bank.transaction.entity;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.util.Date;
 @Data
 public class TransferTransaction {
 	@SuppressWarnings("unused")
