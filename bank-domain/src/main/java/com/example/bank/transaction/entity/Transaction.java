@@ -2,9 +2,13 @@ package com.example.bank.transaction.entity;
 
 import com.example.bank.types.AccountId;
 import com.example.bank.types.Money;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Transaction {
     @SuppressWarnings("unused")
     private long id;
@@ -14,9 +18,6 @@ public class Transaction {
     private Money money;
     private TransactionType transactionType;
 
-    public Transaction() {
-
-    }
     public Transaction toTransferTransaction(AccountId fromAccountId, AccountId toAccountId, Money money) {
         this.fromAccountId = fromAccountId;
         this.toAccountId = toAccountId;
