@@ -9,6 +9,5 @@ import ddd.core.SingleResponse;
 
 public interface ITransactionApplicationService {
     SingleResponse<Boolean> transfer(AccountTransferCmd command);
-
     PageResponse<TransactionDTO> query(TransferTransactionPageQry qry);
 }

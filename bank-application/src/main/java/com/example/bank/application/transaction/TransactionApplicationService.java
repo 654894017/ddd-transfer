@@ -16,16 +16,13 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class TransactionApplicationService implements ITransactionApplicationService {
     private final TransactionTransferCmdExe transactionTransferCmdExe;
-    private final TransactionAssembler transactionAssembler;
     private final TransferTransactionPageQryExe transferTransactionPageQryExe;
-
     @Override
     @Transactional(rollbackFor = Exception.class)
     public SingleResponse<Boolean> transfer(AccountTransferCmd cmd) {
         return transactionTransferCmdExe.transfer(cmd.getSourceUserId(),
                 cmd.getTargetAccountNumber(), cmd.getTargetAmount(), cmd.getTargetCurrency());
     }
-
     @Override
     public PageResponse<TransactionDTO> query(TransferTransactionPageQry qry) {
         return transferTransactionPageQryExe.query(qry);

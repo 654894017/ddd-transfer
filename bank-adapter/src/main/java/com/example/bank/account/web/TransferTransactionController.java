@@ -22,6 +22,12 @@ import javax.validation.Valid;
 public class TransferTransactionController {
     private final ITransactionApplicationService transferApplicationService;
 
+    /**
+     * 转账
+     * @param cmd
+     * @param session
+     * @return
+     */
     @PostMapping("transfer")
     public SingleResponse<Boolean> transfer(@Valid AccountTransferCmd cmd, HttpSession session) {
         Long sourceUserId = (Long) session.getAttribute("user_id");
@@ -29,8 +35,13 @@ public class TransferTransactionController {
         return transferApplicationService.transfer(cmd);
     }
 
-
-    @GetMapping()
+    /**
+     * 查询账户交易明细
+     * @param qry
+     * @param session
+     * @return
+     */
+    @GetMapping("")
     public PageResponse<TransactionDTO> query(@Valid TransferTransactionPageQry qry, HttpSession session) {
         Long sourceUserId = (Long) session.getAttribute("user_id");
         qry.setAccountId(sourceUserId);

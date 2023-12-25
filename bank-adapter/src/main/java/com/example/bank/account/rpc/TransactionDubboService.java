@@ -10,7 +10,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 
 @DubboService(timeout = RPC.DEFAULT_TIMEOUT)
 public class TransactionDubboService extends TransactionApplicationService implements ITransactionApplicationService {
-    public TransactionDubboService(TransactionTransferCmdExe transactionTransferCmdExe, TransactionAssembler transactionAssembler, TransferTransactionPageQryExe transferTransactionPageQryExe) {
-        super(transactionTransferCmdExe, transactionAssembler, transferTransactionPageQryExe);
+    public TransactionDubboService(TransactionTransferCmdExe transactionTransferCmdExe, TransferTransactionPageQryExe transferTransactionPageQryExe) {
+        super(transactionTransferCmdExe, transferTransactionPageQryExe);
     }
 }
